@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>customer homepage</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/customer_dashboard"> Book a Flight</a>
+        <a href="/my_flights">My Flights</a>
+        <a href="/cancel">Cancel Trip</a>
+        <a href="/rating/">Give ratings</a>"
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1> Book a Flight</h1>
+    <form action="/get_flights" method="get">
+        <label for="dep_airport">From</label>
+        <input type='text' name="dep_airport" id="dep_airport" required>
+        <label for="arr_airport">To</label>
+        <input type='text' name="arr_airport" id="arr_airport" required><br>
+        <label for="departuredate">Departure Date</label>
+        <input type="date" id="dep_date" name="dep_date" required><br>
+        <label for="returndate">Return Date</label>
+        <input type="date" id="return_date" name="return_date"><br>
+        
+        <input type="submit" value="Search" />
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+    
+
+    
+</body>
+</html>

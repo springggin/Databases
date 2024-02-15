@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Customers list</title>
+</head>
+<body>
+    <table>
+        <th>first name</th>
+        <th>last name</th>
+        <th>email</th>
+        
+    
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer['fname'] }}</td>
+                <td>{{ customer['lname'] }}</td>
+                <td>{{ customer['email'] }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

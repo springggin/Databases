@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>customer homepage</title>
+
+
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="/customer_dashboard"> Book a Flight</a>
+        <a href="/my_flights">My Flights</a>
+        <a href="/cancel">Cancel Trip</a>
+        <a href="/rating/">Give ratings</a>"
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1>Cancel Trip</h1>
+
+    <table>
+        <th>ticket ID</th>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th></th>
+
+    
+    {% for ticket in tickets %}
+        <tr>
+            <td>{{ticket['ticket_id']}}</td>
+            <td>{{ticket['flight_num']}}</td>
+            <td>{{ticket['dep_date']}}</td>
+            <td>{{ticket['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{ticket['arr_date']}}</td>
+            <td>{{ticket['arr_time']}}</td>            
+            <td><a href="/cancel_confirm?ticket_num={{ ticket['ticket_id'] }}">cancel</a></td> <!--8-->      
+        </tr>
+    {% endfor %}
+   
+    </table>
+
+    </body>
+    </html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff homepage</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/staff_dashboard"> Flights</a>
+        <a href="/view_airplanes"> Airplanes</a> <!--maintenance, add-->
+        <a href="/view_airport"> Airport</a> <!--add-->
+        <a href="/add_airport">Manage Customers</a> <!--frequent customers-->     
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1> View Flights</h1>
+    <h2>{{airline_name}}</h2>
+    <form action="/view_flights" method="post">
+        <label for="dep_airport">From</label>
+        <input type='text' name="dep_airport" id="dep_airport" required>
+        <label for="arr_airport">To</label>
+        <input type='text' name="arr_airport" id="arr_airport" required><br>
+        <label for="start_date">Start Date</label>
+        <input type="date" id="start_date" name="start_date" required><br>
+        <label for="end_date">End Date</label>
+        <input type="date" id="end_date" name="end_date" required>
+        <br>
+        <input type="submit" value="submit" />
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+    <p><a href="/create_flights_clicked"> create flights</a><!--2--></p>
+
+
+    <table>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th>airline name</th>
+        <th>status</th>
+        <th></th>
+        <th></th>
+    
+    {% for flight in flights %}
+        <tr>
+            <td>{{flight['flight_num']}}</td>
+            <td>{{flight['dep_date']}}</td>
+            <td>{{flight['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{flight['arr_date']}}</td>
+            <td>{{flight['arr_time']}}</td>
+            <td>{{flight['Airline_name']}}</td>
+            <td>{{flight['status']}}<br><a href="/change_status?flight_num={{ flight['flight_num'] }}">change</a></td> <!--3-->         
+            <td><a href="/view_ratings?flight_num={{ flight['flight_num'] }}">View ratings</a></td> <!--8-->         
+            <td><a href="/view_customers?flight_num={{ flight['flight_num'] }}">View customers</a></td> <!--8-->         
+            
+        </tr>
+    {% endfor %}
+    </form>
+
+</body>
+
+</html>

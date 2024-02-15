@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff homepage</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/staff_dashboard"> View Flights</a>
+        <a href="/view_airplanes">View Airplanes</a> <!--maintenance, add-->
+        <a href="/add_airport">Add Airport</a> <!--add-->
+        <a href="/add_airport">Manage Customers</a> <!--frequent customers-->     
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1> Create Flights</h1>
+    <form action="/create_flights" method="post">
+        <label for="flight_num">Flight Number:</label>
+        <input type="text" id="flight_num" name="flight_num" required><br>
+    
+        <label for="dep_airport">Departure Airport:</label>
+        <input type="text" id="dep_airport" name="dep_airport" required><br>
+    
+        <label for="dep_date">Departure Date:</label>
+        <input type="date" id="dep_date" name="dep_date" required><br>
+    
+        <label for="dep_time">Departure Time:</label>
+        <input type="time" id="dep_time" name="dep_time" required><br>
+    
+        <label for="arr_airport">Arrival Airport:</label>
+        <input type="text" id="arr_airport" name="arr_airport" required><br>
+    
+        <label for="arr_date">Arrival Date:</label>
+        <input type="date" id="arr_date" name="arr_date" required><br>
+    
+        <label for="arr_time">Arrival Time:</label>
+        <input type="time" id="arr_time" name="arr_time" required><br>
+    
+        <label for="base_price">Base Price:</label>
+        <input type="text" id="base_price" name="base_price" required><br>
+    
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="status" required><br>
+    
+        <label for="airplane">Airplane:</label>
+        <input type="text" id="airplane" name="airplane" required><br>
+    
+        <input type="submit" value="Submit">
+    </form>
+    

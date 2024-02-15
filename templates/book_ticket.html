@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>customer homepage</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/customer_dashboard"> Book a Flight</a>
+        <a href="/my_flights">My Flights</a>
+        <a href="/cancel">Cancel Trip</a>
+        <a href="/rating/">Give ratings</a>"
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1> Book a Flight</h1>
+    <h2> Outbound  {{dep_airport}} > {{arr_airport}}</h2>
+    <h3>{{dep_date}}</h3>
+    <table>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th>airline name</th>
+        <th></th>
+    
+        
+    {% for flight in flights %}
+        <tr>
+            <td>{{flight['flight_num']}}</td>
+            <td>{{flight['dep_date']}}</td>
+            <td>{{flight['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{flight['arr_date']}}</td>
+            <td>{{flight['arr_time']}}</td>
+            <td>{{flight['Airline_name']}}</td>
+            <td><a href="/book_clicked?flight_num={{ flight['flight_num'] }}">book</a></td>          
+        
+        </tr>
+    {% endfor %}
+    </table>
+    <h2> Return  {{arr_airport}} > {{dep_airport}} </h2>
+    <h3>{{return_date}}</h3>
+    <table>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th>airline name</th>
+        <th></th>
+    
+        
+    {% for flight in flights2 %}
+        <tr>
+            <td>{{flight['flight_num']}}</td>
+            <td>{{flight['dep_date']}}</td>
+            <td>{{flight['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{flight['arr_date']}}</td>
+            <td>{{flight['arr_time']}}</td>
+            <td>{{flight['Airline_name']}}</td>
+            <td><a href="/book_clicked?flight_num={{ flights2['flight_num'] }}">book</a></td>          
+        
+        </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>
