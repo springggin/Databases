@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Airplanes</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/staff_dashboard"> Flights</a>
+        <a href="/view_airplanes"> Airplanes</a> <!--maintenance, add-->
+        <a href="/view_airport"> Airport</a> <!--add-->
+        <a href="/add_airport">Manage Customers</a> <!--frequent customers-->     
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1>Add Airport</h1>
+    <h2>{{airline_name}}</h2>
+    <form action="/add_airport" method="post">
+        <label for="code">Code:</label>
+        <input type="text" id="code" name="code" required><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required><br>
+
+        <label for="terminal">Terminal:</label>
+        <input type="text" id="terminal" name="terminal" required><br>
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</main>
+</body>
+
+</html>

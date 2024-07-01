@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Airplanes</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/staff_dashboard"> Flights</a>
+        <a href="/view_airplanes"> Airplanes</a> <!--maintenance, add-->
+        <a href="/view_airport"> Airport</a> <!--add-->
+        <a href="/add_airport">Manage Customers</a> <!--frequent customers-->     
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1> View Airplanes</h1>
+    <h2>{{airline_name}}</h2>
+
+    <main>
+    <p><a href="/add_airplane_clicked"> add airplane</a><!--4--></p>
+<table>
+    <th>ID</th>
+    <th>Seats</th>
+    <th>Manufacturing Company</th>
+    <th>Model Number</th>
+    <th>Manufacturing Date</th>
+    <th>Age</th>
+
+    {% for airplane in airplanes %}
+        <tr>
+            <td>{{ airplane['ID'] }}</td>
+            <td>{{ airplane['seats'] }}</td>
+            <td>{{ airplane['manufacturing_company'] }}</td>
+            <td>{{ airplane['model_num'] }}</td>
+            <td>{{ airplane['manufacturing_date'] }}</td>
+            <td>{{ airplane['age'] }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+    </form>
+</main>
+</body>
+
+</html>

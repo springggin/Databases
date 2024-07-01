@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>customer homepage</title>
+
+
+</head>
+
+<body>
+
+    <div class="nav">
+        <a href="/customer_dashboard"> Book a Flight</a>
+        <a href="/my_flights">My Flights</a>
+        <a href="/cancel">Cancel Trip</a>
+        <a href="/rating/">Give ratings</a>"
+        <a href="/logout">{{username}}: log out </a> 
+    </div>
+    <br>
+    <h1>My Flights</h1>
+
+    <form action="/view_myflights" method="post">
+       
+        <label for="start_date">Start Date</label>
+        <input type="date" id="start_date" name="start_date"><br>
+        <label for="end_date">End Date</label>
+        <input type="date" id="end_date" name="end_date">
+        <br>
+        <input type="submit" value="Search" />
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+
+    <table>
+        <th>ticket number</th>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th>status</th>
+        <th>cancel</th>
+        <th>rating</th>
+    
+    {% for flight in flights %}
+        <tr>
+            <td>{{flight['ticket_num']}}</td>
+            <td>{{flight['flight_num']}}</td>
+            <td>{{flight['dep_date']}}</td>
+            <td>{{flight['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{flight['arr_date']}}</td>
+            <td>{{flight['arr_time']}}</td>
+            <td>{{flight['status']}}<br></td> <!--3-->
+            
+            <td><a href="/cancel?ticket_num={{ flight['ticket_num'] }}">cancel</a></td> <!--8-->      
+            <td><a href="/rate?ticket_num={{ flight['ticket_num'] }}">rate</a></td>
+        </tr>
+    {% endfor %}
+   
+    </table>
+
+    </body>
+    </html>

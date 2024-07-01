@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/search">Search</a>
+        <a href="/flight_status">Flights Status</a>
+        <a href="/login">Login</a>
+        <a href="/regcustomer">Register as customer</a>
+        <a href="/regstaff">Register as staff</a>
+    </div>
+    <h1> Search for Future Flights</h1>
+    <form action="/search" method="post">
+        <label for="dep_airport">From</label>
+        <input type='text' name="dep_airport" id="dep_airport" required>
+        <label for="arr_airport">To</label>
+        <input type='text' name="arr_airport" id="arr_airport" required><br>
+        <label for="dep_date">Departure Date</label>
+        <input type="date" id="dep_date" name="dep_date" required><br>
+        <label for="return_date">Return Date</label>
+        <input type="date" id="return_date" name="return_date"><br>
+        <input type="submit" value="submit" />
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{error}}</p>
+        {% endif %}
+    </form>
+    <p><a href="/"> </a><!--2--></p>
+
+
+    <p> Outbound  {{dep_airport}} > {{arr_airport}}</p>
+    <p>{{dep_date}}</p>
+    <table>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th>airline name</th>
+        <th></th>
+    
+        
+    {% for flight in flights %}
+        <tr>
+            <td>{{flight['flight_num']}}</td>
+            <td>{{flight['dep_date']}}</td>
+            <td>{{flight['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{flight['arr_date']}}</td>
+            <td>{{flight['arr_time']}}</td>
+            <td>{{flight['Airline_name']}}</td>
+            <td>{{flight['status']}}</td>
+         
+        
+        </tr>
+    {% endfor %}
+    </table>
+
+    <p> Return  {{arr_airport}} > {{dep_airport}} </p>
+    <p>{{return_date}}</p>
+    <table>
+        <th>flight number</th>
+        <th>departure date</th>
+        <th>time</th>
+        <th>    </th>
+        <th>arrival date</th>
+        <th>time</th>
+        <th>airline name</th>
+        <th></th>
+    
+        
+    {% for flight in flights2 %}
+        <tr>
+            <td>{{flight['flight_num']}}</td>
+            <td>{{flight['dep_date']}}</td>
+            <td>{{flight['dep_time']}}</td>
+            <td> -> </td>
+            <td>{{flight['arr_date']}}</td>
+            <td>{{flight['arr_time']}}</td>
+            <td>{{flight['Airline_name']}}</td>
+            <td>{{flight['status']}}</td>
+               
+        
+        </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>
+
+   

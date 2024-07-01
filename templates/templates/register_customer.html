@@ -1,0 +1,35 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/customerregAuth" method="POST">
+	<h1> Customer Registration </h1>
+	<label>name</label>
+	<input type="text" name = "fname" placeholder="first name" required/> 
+	<input type="text" name = "lname" placeholder="last name" required/> </br><br>
+	<label>email</label>
+	<input type="email" name = "email" placeholder="email" required/> </br><br>
+	<label>password</label>
+	<input type="password" name = "password" placeholder="password" required/></br><br>
+	<label> address</label><br>
+	<input type="text" name = "building" placeholder=" building number" required/> 
+	<input type="text" name = "street" placeholder="street name" required/> </br>
+	<input type="text" name = "apt" placeholder=" Apartment number" required/> 
+	<input type="text" name = "city" placeholder="city" required/> </br>
+	<input type="text" name = "state" placeholder="state" required/> 
+	<input type="text" name = "zip" placeholder="zip code" required/> </br><br>
+	<label>phone</label>
+	<input type="text" name = "phone" placeholder="phone number" required/> </br><br> <!--하나 이상 -->
+	<label> date of birth</label>
+	<input type="date" name = "dob" placeholder="date of birth" required/> </br><br>
+
+	
+	<input type="submit" value = Register />
+	{% if error %}
+		<p class="error" style="color: red;"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/">Go back</a>
+</body>
+</html>
